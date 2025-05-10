@@ -4,6 +4,8 @@ RUN apk add --no-cache curl bash
 
 ENV BUN_INSTALL="/root/.bun"
 ENV PATH="${BUN_INSTALL}/bin:$PATH"
+ENV BUN_VERSION="1.2.11"
+
 RUN curl -fsSL https://bun.sh/install | bash && \
     ${BUN_INSTALL}/bin/bun --version
 
