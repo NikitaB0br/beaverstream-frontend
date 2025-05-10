@@ -86,11 +86,14 @@ export function ChangeAvatarForm() {
 									channel={{
 										username: user?.username!,
 										avatar:
+											typeof File !== 'undefined' &&
 											field.value instanceof File
 												? URL.createObjectURL(
 														field.value
 													)
-												: field.value
+												: (field.value as
+														| string
+														| undefined)
 									}}
 									size='xl'
 								/>
