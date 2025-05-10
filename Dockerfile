@@ -2,9 +2,10 @@ FROM node:20.17.0-alpine AS base
 
 RUN apk add --no-cache curl bash
 
-RUN curl -fsSL https://bun.sh/install | bash
-
-ENV PATH="/root/.bun/bin:$PATH"
+ENV BUN_INSTALL="/root/.bun"
+ENV PATH="${BUN_INSTALL}/bin:$PATH"
+RUN curl -fsSL https://bun.sh/install | bash && \
+    ${BUN_INSTALL}/bin/bun --version
 
 WORKDIR /app
 
@@ -13,8 +14,6 @@ COPY package.json bun.lockb ./
 RUN bun install
 
 COPY . .
-
-RUN bun graphql-codegen --config graphql.config.ts
 
 RUN bun run build
 
