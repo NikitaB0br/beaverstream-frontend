@@ -1,3 +1,5 @@
+'use client'
+
 import { type VariantProps, cva } from 'class-variance-authority'
 
 import { FindProfileQuery } from '@/graphql/generated/output'
