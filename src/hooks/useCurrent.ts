@@ -22,7 +22,7 @@ export function useCurrent() {
 			}
 			exit()
 		}
-	}, [error])
+	}, [isAuthenticated, exit, clear])
 
 	return {
 		user: data?.findProfile,
